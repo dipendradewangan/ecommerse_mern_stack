@@ -3,15 +3,14 @@ import React from 'react'
 const Nav = () => {
     return (
         <>
-            <Nav>
-                <ul className="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Home</a></li>
+            <nav>
+                <ul id='menu'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/'>Home</a></li>
                 </ul>
-            </Nav>
+            </nav>
         </>
     )
 }

@@ -1,10 +1,13 @@
 import React from 'react'
-import './Header.css'
+import Nav from '../Nav/Nav'
 
 const Header = () => {
     return (
         <>
-            <Header className="header">header</Header>
+            <header>
+                <h1>This is header</h1>
+                <Nav/>
+            </header>
         </>
     )
 }
