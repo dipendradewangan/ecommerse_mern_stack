@@ -2,23 +2,23 @@
     display: flex;
     justify-content: space-between;
     width: 70vw;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin : 0 auto;
     padding: 
 }
 
 .cart-info{
     width: 30%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .cart-item-list{
     width: 70%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .cart-item{
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .image-box{
@@ -42,10 +42,10 @@
     color: black;
 }
 
-.item-quantity{
-    /* background-color: yellow;*/
+#quantity-selector{
+    width: 100px;
+    /* border: 1px solid red; */
 }
-
 
 
 .cart-info-label{
