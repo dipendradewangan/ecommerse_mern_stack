@@ -1,10 +1,11 @@
 import React from 'react'
+import Products from '../Product/Products'
 
 const Section = () => {
     return (
         <>
             <section>
-                <h1>This is section</h1>
+                <Products/>
             </section>
         </>
     )
