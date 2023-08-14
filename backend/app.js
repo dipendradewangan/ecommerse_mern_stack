@@ -3,7 +3,7 @@ const productRouter = require('./routes/productRoutes');
 const app = express();
 
 app.use(express.json())
-app.use("/", productRouter);
+app.use("/api", productRouter);
 
 
 module.exports = app;
