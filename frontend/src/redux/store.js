@@ -1,8 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import { amountReducer } from './reducer/reducer'
+import { productReducer } from './reducer/reducer'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-let reducer = combineReducers({amount : amountReducer})
+let reducer = combineReducers({ products : productReducer })
 
-export const store = createStore(reducer, applyMiddleware(logger, thunk))
+export const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger, thunk)))
