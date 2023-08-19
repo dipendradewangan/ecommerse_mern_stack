@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/actions/productActions'
 const Products = () => {
     const dispatch = useDispatch()
-    const products = useSelector(state=>state)
+    const products = useSelector(state=>state.products)
     useEffect(()=>{
         dispatch(getProducts())
     },[dispatch])
-    console.log(products)
+
+    console.log(products.products.length)
+
     return (
         <>
             <button style={{ background: "red" }} onClick={() => dispatch(getProducts())}>Load</button>
