@@ -1,18 +1,22 @@
-import axios from 'axios'
+import axios from 'axios';
 
-export const GET_PRODUCTS = 'product/fetchAll'
-export const GET_PRODUCTS_FULLFILLED = 'product/fetchProductFullfilled'
+export const ALL_PRODUCT_REQUEST = 'ALL_PRODUCT_REQUEST'
+export const ALL_PRODUCTS_SUCCESS = 'ALL_PRODUCTS_SUCCESS'
+export const ALL_PRODUCTS_FAILED = 'ALL_PRODUCTS_FAILED'
 
 
-export  async function getPoducts(){
-    const {data} = await axios.get('http://localhost:8080/api/products')
-    return {
-        type : GET_PRODUCTS,
-        payload : data
+export const getProducts = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: ALL_PRODUCT_REQUEST })
+        const { data } = await axios.get("/api/products")
+        dispatch({
+            type: ALL_PRODUCTS_SUCCESS,
+            payload: data
+        })
+
     }
+    catch (error) {
+        dispatch({ type: ALL_PRODUCTS_FAILED, payload: error })
+    }
+
 }
-
-
-export function getProductFullfilled(){
-    type 
-} 
