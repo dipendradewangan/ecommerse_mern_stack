@@ -13,10 +13,10 @@ export const getProducts = () => async (dispatch, getState) => {
             type: ALL_PRODUCTS_SUCCESS,
             payload: data
         })
-
+ 
     }
-    catch (error) {
-        dispatch({ type: ALL_PRODUCTS_FAILED, payload: error })
+    catch (error){
+        dispatch({type : ALL_PRODUCTS_FAILED, payload : error})
     }
 
 }
