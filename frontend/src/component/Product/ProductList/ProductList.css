@@ -1,0 +1,55 @@
+.productListContainer{
+    background-color: rgb(245, 245, 245);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border-radius: 10px;
+}
+
+
+.productRow {
+    /* border-right: hidden; */
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: -6px 0px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    color: gray;
+}
+
+td:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+td:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.productCol {
+    border-right: hidden;
+    padding: 10px;
+    /* border: 1px solid red; */
+}
+
+.id{
+    color: rgb(4, 66, 107);
+    text-align: center;
+    font-size: small;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+}
+
+.name{
+    color: rgb(32, 181, 250)
+
+}
+
+.name p{
+    font-size: small;
+    color: gray;
+    font-weight: normal;
+}
