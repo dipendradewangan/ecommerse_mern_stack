@@ -21,7 +21,7 @@ const ProductList = () => {
             <div className='productListContainer'>
                 <div className='p-3 mb-10 flex justify-between align-middle border-t-2 border-b-2'>
                     <h1 className='font-semibold text-4xl'>Products</h1>
-                    <Button variant="contained">New Product</Button>
+                    <Button color="secondary" variant="contained" sx={{ width : 'auto',fontSize: 20,fontFamily : "sans-serif", height: 60 }}>New Product</Button>
                 </div>
                 <div>
                     <table className='w-full'>
