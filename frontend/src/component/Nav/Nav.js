@@ -1,25 +1,53 @@
 import React from 'react'
-import { Button, Avatar } from '@mui/material'
-import { deepOrange } from '@mui/material/colors'
+import { Button, Avatar, SpeedDial, SpeedDialAction } from '@mui/material'
+import { deepOrange, purple } from '@mui/material/colors'
+import { SpeedDialIcon } from '@mui/material'
+
 
 const Nav = () => {
     return (
         <>
-            <nav className='flex justify-between px-4'>
+            <nav className='flex justify-between p-4 border-4 relative'>
                 <ul className='flex font-bold gap-5' id='menu'>
-                    <li><a href='/'>Home</a></li>
-                    <li><a href='/'>Home</a></li>
-                    <li><a href='/'>Home</a></li>
-                    <li><a href='/'>Home</a></li>
+                    <li>
+                        <a href='/'>
+                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>Home</Button>
+                        </a>
+                    </li>
+
                 </ul>
 
                 <div className='flex gap-5'>
                     {
                         true ? (
-                            true
-                                ? (<Avatar sx={{ width: 60, height: 60, fontSize: 20 }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />)
-                                : (<Avatar sx={{ bgcolor: deepOrange[500], width: 60, height: 60, fontSize: 20 }}>N</Avatar>)
+                            <>
+                                {/* <Button variant='text' color='secondary' sx={{ width: 'auto', height: "auto", borderRadius: '50%', padding: 0 }}>
+                                    <Avatar color="secondary" sx={{ bgcolor: purple[200], width: 60, height: 60, fontSize: 20, padding: 0 }} alt="dipendra Sharp" src="https://opengaph.githubassets.com/f290141da99370fb020ae1894bed592867c05e4871087e18c32a37a1b2d4cf79/mui/material-ui/issues/3510" />
+                                </Button> */}
+                                <SpeedDial
+                                    direction='down'
+                                    ariaLabel="SpeedDial basic example"
+                                    sx={{ position: 'absolute', right :15}}
+                                    icon={<Avatar color="secondary" sx={{ bgcolor: purple[200], width: 60, height: 60, fontSize: 20, padding: 0 }} alt="dipendra Sharp" src="https://opengaph.githubassets.com/f290141da99370fb020ae1894bed592867c05e4871087e18c32a37a1b2d4cf79/mui/material-ui/issues/3510" />}
+                                >
 
+                                    <SpeedDialAction
+                                        key={"key"}
+                                    />
+                                    <SpeedDialAction
+                                        key={"key"}
+                                    />
+                                    <SpeedDialAction
+                                        key={"key"}
+                                    />
+                                    <SpeedDialAction
+                                        key={"key"}
+                                    />
+
+
+
+                                </SpeedDial>
+                            </>
 
                         ) : (
                             <>
@@ -36,3 +64,5 @@ const Nav = () => {
 }
 
 export default Nav
+
+// bgcolor: deepOrange[500],
