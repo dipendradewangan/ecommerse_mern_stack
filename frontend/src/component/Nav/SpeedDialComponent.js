@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 
-const admin = true;
+const isAdmin = false;
 
 
 // speed dial activity api
@@ -68,7 +68,7 @@ const SpeedDialComponent = () => {
           }
 
           {
-            admin 
+            isAdmin 
             ? (
               <SpeedDialAction
                 
