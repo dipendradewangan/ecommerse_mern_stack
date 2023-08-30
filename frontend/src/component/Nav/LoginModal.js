@@ -1,6 +1,6 @@
-import { Box, Modal } from '@mui/material'
+import { Box, Modal, Button } from '@mui/material'
 import React, { useState } from 'react'
-import "./LoginModal.css"
+import "./authModal.css"
 import ecommerseAuthImg from '../images/ecommerse-auto-img.jpg'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -10,15 +10,17 @@ const style = {
     position: "relative",
     top: "5vmin",
     margin: "0 auto",
-    width: "80%",
+    width: "70%",
     tansform: "translate(-50%, -50%)",
-    boder: "none"
+    boder: "none",
+    borderRadius : "10px",
+    boxShadow : "0px 34px 40px black"
 }
 
 
 
-const LoginModal = ({ loginOpen, setLoginOpen, setSignupOpen}) => {
-    
+const LoginModal = ({ loginOpen, setLoginOpen, setSignupOpen }) => {
+
     const handelClose = () => setLoginOpen(false)
     const [showCredential, setShowCredential] = useState(false)
     let isVisible = showCredential;
@@ -31,27 +33,30 @@ const LoginModal = ({ loginOpen, setLoginOpen, setSignupOpen}) => {
                 onClose={handelClose}
             >
                 <Box sx={style}>
-                    <div className='loginContainer'>
-                        <div className='logo-side'>
+                <div className='authModalContainer'>
+                        <div className='logo-side flex justify-center items-center'>
                             <img className='ecommerse-auto-img' src={ecommerseAuthImg} alt='login-logo' />
                         </div>
-                        <div className='form-side'>
+                        <div className='form-side flex justify-center items-center flex-col'>
                             <h1 className='text-center font-medium text-3xl mb-10'>Welcome to Ecommerse</h1>
-                            <div className='login-form-box'>
-                                <h1 className='text-left font-medium text-3xl mb-10'>Login now</h1>
-                                <form className='flex flex-col gap-2'>
-                                    <label>Email</label>
-                                    <input type="email" />
-                                    <label>Password</label>
+                            <div className='login-form-box w-96'>
+                                <h1 className='font-medium text-2xl mb-5 text-center'>Login now</h1>
+                                <form className='flex flex-col gap-2 px-6'>
+                                    <label className='authFormLabel'>Email</label>
+                                    <input className='authFormInput' type="email" />
+                                    <label className='authFormLabel'>password</label>
                                     <div>
-                                    <input type="password"/>
+
+                                    <input className='authFormInput' type={isVisible ? "password" : "text"} />
                                     {
                                         isVisible ? <VisibilityIcon onClick={()=>setShowCredential(false)}/> : <VisibilityOffIcon onClick={()=>setShowCredential(true)}/>
                                     }
                                     </div>
-                                    <button type='submit'>Login</button>
+                                    
+                                
+                                    <Button className='center' variant="contained" color="success" type='submit' sx={{margin : "20px auto",marginTop: 1, width : "100px"  }}>Login</Button>
                                 </form>
-                                <p>New User ? <button onClick={()=>{setSignupOpen(true), setLoginOpen(false)}}>Register now</button></p>
+                                <p>New user?<Button sx={{ textTransform: "capitalize", textDecoration : "underline"}} color="primary">Signup now!</Button></p>
                             </div>
                         </div>
                     </div>
