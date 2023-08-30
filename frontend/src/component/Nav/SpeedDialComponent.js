@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 
-const isAdmin = false;
+const isAdmin = true;
 
 
 // speed dial activity api
