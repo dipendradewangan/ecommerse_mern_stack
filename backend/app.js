@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json())
 app.use("/api", productRouter);
-app.use("/", userRouter)
+app.use("/api", userRouter)
 
 // error middleware
 
