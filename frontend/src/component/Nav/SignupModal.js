@@ -2,7 +2,6 @@ import { Box, Modal} from '@mui/material'
 import React from 'react'
 import Button from '@mui/material/Button'
 import "./authModal.css"
-
 import ecommerseAuthImg from '../images/ecommerse-auto-img.jpg'
 
 
@@ -20,7 +19,8 @@ const style = {
 
 const SignupModal = ({ signupOpen, setSignupOpen, setLoginOpen }) => {
 
-    console.log(signupOpen)
+
+
     return (
         <>
             <Modal
@@ -36,7 +36,7 @@ const SignupModal = ({ signupOpen, setSignupOpen, setLoginOpen }) => {
                             <h1 className='text-center font-medium text-3xl mb-10'>Welcome to Ecommerse</h1>
                             <div className='login-form-box w-96'>
                                 <h1 className='font-medium text-2xl mb-5 text-center'>Register now</h1>
-                                <form className='flex flex-col gap-2 px-6'>
+                                <form id="signupForm"  className='flex flex-col gap-2 px-6'>
                                     <label className='authFormLabel'>Name</label>
                                     <input className='authFormInput' type="text" />
                                     <label className='authFormLabel'>Email</label>
@@ -47,9 +47,9 @@ const SignupModal = ({ signupOpen, setSignupOpen, setLoginOpen }) => {
                                     <input className='authFormInput' type="password" />
                                     
                                 
-                                    <Button className='center' variant="contained" color="success" type='submit' sx={{margin : "20px auto",marginTop: 1, width : "100px"  }}>Signup</Button>
+                                    <Button  className='center' variant="contained" color="success" type='submit' sx={{margin : "20px auto",marginTop: 1, width : "100px"  }}>Signup</Button>
                                 </form>
-                                <p>Allready Signed up?<Button sx={{ textTransform: "capitalize", textDecoration : "underline"}} color="primary">Login now!</Button></p>
+                                <p>Allready Signed up?<Button onClick={()=>{setLoginOpen(true); setSignupOpen(false);}} sx={{ textTransform: "capitalize", textDecoration : "underline"}} color="primary">Login now!</Button></p>
                             </div>
                         </div>
                     </div>

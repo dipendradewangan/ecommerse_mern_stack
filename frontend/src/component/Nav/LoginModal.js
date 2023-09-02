@@ -24,8 +24,6 @@ const LoginModal = ({ loginOpen, setLoginOpen, setSignupOpen }) => {
     const handelClose = () => setLoginOpen(false)
     const [showCredential, setShowCredential] = useState(false)
     let isVisible = showCredential;
-
-    console.log(loginOpen)
     return (
         <>
             <Modal
@@ -56,7 +54,7 @@ const LoginModal = ({ loginOpen, setLoginOpen, setSignupOpen }) => {
                                 
                                     <Button className='center' variant="contained" color="success" type='submit' sx={{margin : "20px auto",marginTop: 1, width : "100px"  }}>Login</Button>
                                 </form>
-                                <p>New user?<Button sx={{ textTransform: "capitalize", textDecoration : "underline"}} color="primary">Signup now!</Button></p>
+                                <p>New user?<Button onClick={()=>{setLoginOpen(false); setSignupOpen(true);}} sx={{ textTransform: "capitalize", textDecoration : "underline"}} color="primary">Signup now!</Button></p>
                             </div>
                         </div>
                     </div>

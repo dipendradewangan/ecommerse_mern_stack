@@ -5,7 +5,7 @@ import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import logo from "../images/logo.png"
 
-const isLogged = true
+const isLogged = false
 
 
 const Nav = () => {

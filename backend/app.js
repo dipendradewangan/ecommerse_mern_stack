@@ -1,6 +1,7 @@
 const express = require('express');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require("./routes/userRoutes");
+const errorMiddleware = require('./middleware/error');
 const app = express();
 
 app.use(express.json())
@@ -9,11 +10,6 @@ app.use("/api", userRouter)
 
 // error middleware
 
-app.use((err, req, res, next)=>{
-    res.status(err.statusCode || 500).json({
-        success : false,
-        message : err.message || "Internal server error"
-    })
-})
+app.use(errorMiddleware)
 
 module.exports = app;
