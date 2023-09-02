@@ -1,6 +1,7 @@
 const catchAsyncError = require("./catchAsyncError");
 const ErrorHandler = require("../utils/errorHandler")
 const userModal = require("../modal/userModal")
+const sendToken = require("../utils/sendToken.js");
 
 const registerUser = catchAsyncError(async (req, res, next)=>{
     const {
@@ -32,10 +33,13 @@ const loginUser = catchAsyncError(async (req, res, next)=>{
         return next(new ErrorHandler("Invalid username or password", 401))
     }
 
-    if(!user.comparePassword(password)){
-        return next(new ErrorHandler("Invalid password", 401));
+    const isMatchedPassword = await user.comparePassword(password)
+    
+    if(!isMatchedPassword){
+        return next(new ErrorHandler("Invalid Username or Password", 401));
     }
 
+    sendToken(res, user, 200);
 
 })
 module.exports = {registerUser, loginUser}

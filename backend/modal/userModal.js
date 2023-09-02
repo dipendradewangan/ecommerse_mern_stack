@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -44,8 +45,16 @@ userSchema.pre("save", function () {
 })
 
 
-userSchema.methods.comparePassword = async (data) => {
+// used old mathod of function becouse i have to use this keywork into this
+userSchema.methods.comparePassword = async function (data) {
     return await bcryptjs.compare(data, this.password)
 }
+
+
+userSchema.methods.getUserToken = async function () {
+
+    return await jwt.sign({ id: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE })
+}
+
 
 module.exports = mongoose.model("User", userSchema)
