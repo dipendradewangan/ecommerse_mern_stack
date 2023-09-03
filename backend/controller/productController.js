@@ -19,8 +19,8 @@ const getAllProducts = catchAsyncError( async (req, res) => {
 })
 
 const createProduct = catchAsyncError(async (req, res, next) => {
-
-    const product = productSchema.create(req.body);
+    const {_id} = req.user;
+    const product = productSchema.create({...req.body, createdBy : _id});
     res.status(201).json({
         success: true,
         message: "successfully created",
@@ -50,7 +50,6 @@ const deleteProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     const id = req.params.id
-    console.log(id);
     let updateData = {
         ...req.body
     }

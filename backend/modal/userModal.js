@@ -33,6 +33,22 @@ const userSchema = new mongoose.Schema({
         url: {
             type: String,
         }
+    },
+    roles: {
+        type: String,
+        default: "user"
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
     }
 
 })
@@ -52,9 +68,10 @@ userSchema.methods.comparePassword = async function (data) {
 
 
 userSchema.methods.getUserToken = async function () {
-
     return await jwt.sign({ id: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE })
 }
+
+
 
 
 module.exports = mongoose.model("User", userSchema)
