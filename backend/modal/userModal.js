@@ -38,6 +38,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "user"
     },
+
+    resetPasswordToken : String,
+    resetPasswordTokenExpire : Date,
     createdAt: {
         type: Date,
         default: Date.now
@@ -71,6 +74,10 @@ userSchema.methods.getUserToken = async function () {
     return await jwt.sign({ id: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE })
 }
 
+
+userSchema.methods.getResetPasswordToken = function(){
+    
+}
 
 
 

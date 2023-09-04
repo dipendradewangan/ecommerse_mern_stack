@@ -8,7 +8,7 @@ router.get('/products', getAllProducts)
 
 router.post('/product/new', isAuthenticateUser, authorisedRole("admin"), createProduct)
 
-router.delete('/product/:id', deleteProduct)
+router.delete('/product/:id',isAuthenticateUser, authorisedRole("admin"),  deleteProduct)
 
 router.put('/product/:id', updateProduct)
 
