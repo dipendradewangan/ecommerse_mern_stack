@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const { createProduct, getAllProducts, deleteProduct, updateProduct } = require('../controller/productController');
-const { isAuthenticateUser } = require("../middleware/auth");
+const { isAuthenticateUser, authorisedRole } = require("../middleware/auth");
 
 
 
-router.get('/products',getAllProducts)
+router.get('/products', getAllProducts)
 
-router.post('/product/new', isAuthenticateUser, createProduct)
+router.post('/product/new', isAuthenticateUser, authorisedRole("admin"), createProduct)
 
 router.delete('/product/:id', deleteProduct)
 

@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
             type: String,
         }
     },
-    roles: {
+    role: {
         type: String,
         default: "user"
     },
