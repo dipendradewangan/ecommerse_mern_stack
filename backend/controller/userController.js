@@ -101,16 +101,17 @@ const forgotPassword = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler(`No User Found with this Email ${email}`, 404));
     }
 
-    user.getResetPasswordToken()
-
-    const emailContent = {
-        email: user.email,
-        subject: "2testing email",
-        text: "Hello this is testing mail from node js server",
-    }
+    // user.getResetPasswordToken()
     try {
 
-        sendEmail(emailContent)
+        const emailContent = {
+            email: "dewangandipendradewangan@gmail.com",
+            subject: "2testing email",
+            text: "Hello this is testing mail from node js server",
+        }
+
+        sendEmail(emailContent, next)
+
         res.status(200).json({
             success: true,
             message: `Mail sent Successfully to ${emailContent.email}`
