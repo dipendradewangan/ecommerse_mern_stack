@@ -1,4 +1,4 @@
-const { registerUser, loginUser, logoutUser, updatePassword, forgotPassword } = require("../controller/userController");
+const { registerUser, loginUser, logoutUser, updatePassword, forgotPassword, resetPassword } = require("../controller/userController");
 const { isAuthenticateUser } = require("../middleware/auth");
 
 
@@ -13,8 +13,10 @@ router.post("/login", loginUser);
 
 router.get("/logout", logoutUser);
 
-router.post("/password/update", isAuthenticateUser, updatePassword)
+router.post("/password/update", isAuthenticateUser, updatePassword);
 
-router.post("/password/forgot", forgotPassword)
+router.post("/password/forgot", forgotPassword);
+
+router.put("/password/reset/:token", resetPassword);
 
 module.exports = router;

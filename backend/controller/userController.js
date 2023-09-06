@@ -3,6 +3,7 @@ const ErrorHandler = require("../utils/errorHandler")
 const userModal = require("../modal/userModal")
 const sendToken = require("../utils/sendToken.js");
 const sendEmail = require("../utils/sendEmail");
+const crypto = require("crypto")
 
 const registerUser = catchAsyncError(async (req, res, next) => {
     const {
@@ -101,13 +102,19 @@ const forgotPassword = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler(`No User Found with this Email ${email}`, 404));
     }
 
-    // user.getResetPasswordToken()
+    const resetToken = await user.getResetPasswordToken(user);
+
+    await user.save({ validateBeforeSave: true });
+
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/password/reset/${resetToken}`;
+
+
     try {
 
         const emailContent = {
             email: "dewangandipendradewangan@gmail.com",
-            subject: "2testing email",
-            text: "Hello this is testing mail from node js server",
+            subject: "Password recovery email",
+            url: resetPasswordUrl,
         }
 
         sendEmail(emailContent, next)
@@ -128,6 +135,36 @@ const forgotPassword = catchAsyncError(async (req, res, next) => {
 })
 
 
+const resetPassword = catchAsyncError(async (req, res, next) => {
+    const token = req.params.token;
+    const { password, confirmPassword } = req.body;
+
+    const resetToken = crypto.createHash("sha256").update(token).digest("hex");
+    const user = await userModal.findOne({ resetPasswordToken: resetToken, resetPasswordTokenExpire: { $gte: Date.now() } });
+
+    if (!user) {
+        user.resetPasswordToken = undefined;
+        user.resetPasswordTokenExpire = undefined;
+        await user.save({ validateBeforeSave: false });
+        return next(new ErrorHandler("resetPasswordToken has been expired", 401))
+    }
+
+    console.log(password)
+    console.log(confirmPassword)
+
+    if (password !== confirmPassword) {
+        return next(new ErrorHandler('given passwords do not match', 403));
+    }
+
+    user.password = password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordTokenExpire = undefined;
+    user.updatedAt = Date.now();
+
+    await user.save();
+    sendToken(user, 200, res)
 
 
-module.exports = { registerUser, loginUser, logoutUser, updatePassword, forgotPassword }
+})
+
+module.exports = { registerUser, loginUser, logoutUser, updatePassword, forgotPassword, resetPassword }

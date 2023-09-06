@@ -7,7 +7,6 @@ const sendEmail = catchAsyncError(async (options) => {
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
-        // service : "gmail",
         auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD
@@ -21,7 +20,7 @@ const sendEmail = catchAsyncError(async (options) => {
         subject: options.subject,
         text: options.text,
         html: `
-                    <!DOCTYPE html>
+            <!DOCTYPE html>
             <html lang="en">
 
             <head>
@@ -112,12 +111,12 @@ const sendEmail = catchAsyncError(async (options) => {
                             to reset your password, click the following button or visit the
                             following url
                         </p>
-                        <a class="link" href="/index.html">
+                        <a class="link" href="${options.url}">
                             <button class="url-btn">CLICK HERE TO RESET YOUR PASSWORD</button>
                         </a>
 
                         <p class="email">Your Email : ${options.email}</p>
-                        <p class="url">http://localhost:8080/api/password/forgot</p>
+                        <p class="url"><b>url</b> : ${options.url}</p>
                         <h3 class="text">If this was a mistake, just ignore this email and nothing and will happen</h3>
 
                     </div>
