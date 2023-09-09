@@ -41,7 +41,7 @@ const loginUser = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler("Invalid Username or Password", 401));
     }
 
-    sendToken(res, user, 200);
+    sendToken(res, user, 200, "succuess fully login");
 
 })
 
@@ -161,7 +161,7 @@ const resetPassword = catchAsyncError(async (req, res, next) => {
 
     await user.save();
 
-    sendToken(res, user, 200);
+    sendToken(res, user, 200, "Password successfully changed!");
 
 
 })

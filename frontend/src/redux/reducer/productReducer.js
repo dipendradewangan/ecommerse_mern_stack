@@ -1,21 +1,25 @@
-import { ALL_PRODUCTS_FAILED, ALL_PRODUCTS_SUCCESS, ALL_PRODUCT_REQUEST} from "../actions/productActions";
+import {
+    ALL_PRODUCT_REQUEST,
+    ALL_PRODUCTS_SUCCESS,
+    ALL_PRODUCTS_FAILED
+} from "../constants/productConstants"
 
-export const productReducer = (state = { products : [] }, action)=>{
+export const productReducer = (state = { products: [] }, action) => {
     switch (action.type) {
-        case ALL_PRODUCT_REQUEST :
+        case ALL_PRODUCT_REQUEST:
             return {
-                loading : true,
-                products : []
+                loading: true,
+                products: []
             }
         case ALL_PRODUCTS_SUCCESS:
             return {
-                isLoading : false,
-                products : action.payload.data
+                isLoading: false,
+                products: action.payload.data
             }
-        case ALL_PRODUCTS_FAILED :
+        case ALL_PRODUCTS_FAILED:
             return {
-                isLoading : false,
-                ...state ,
+                isLoading: false,
+                ...state,
             }
         default:
             return state;

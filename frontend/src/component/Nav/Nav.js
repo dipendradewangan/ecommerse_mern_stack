@@ -5,8 +5,9 @@ import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import logo from "../images/logo.png"
 
-const isLogged = false
+const isLogged = true
 
+const menuDesign = { width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }
 
 const Nav = () => {
 
@@ -21,27 +22,27 @@ const Nav = () => {
                 <ul className='flex font-bold gap-5' id='menu'>
                     <li>
                         <a href='/'>
-                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>Home</Button>
+                            <Button variant='text' color='secondary' sx={menuDesign}>Home</Button>
                         </a>
                     </li>
                     <li>
                         <a href='/'>
-                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>Services</Button>
+                            <Button variant='text' color='secondary' sx={menuDesign} >Services</Button>
                         </a>
                     </li>
                     <li>
                         <a href='/'>
-                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>About</Button>
+                            <Button variant='text' color='secondary' sx={menuDesign}>About</Button>
                         </a>
                     </li>
                     <li>
                         <a href='/'>
-                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>Portpholio</Button>
+                            <Button variant='text' color='secondary' sx={menuDesign}>Portpholio</Button>
                         </a>
                     </li>
                     <li>
                         <a href='/'>
-                            <Button variant='text' color='secondary' sx={{ width: 'auto', paddingX: 5, height: 60, fontSize: 25, fontWeight: "bold", textTransform: 'capitalize' }}>Contect Us</Button>
+                            <Button variant='text' color='secondary' sx={menuDesign}>Contect Us</Button>
                         </a>
                     </li>
 

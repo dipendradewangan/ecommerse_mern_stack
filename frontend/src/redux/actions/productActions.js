@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-export const ALL_PRODUCT_REQUEST = 'ALL_PRODUCT_REQUEST'
-export const ALL_PRODUCTS_SUCCESS = 'ALL_PRODUCTS_SUCCESS'
-export const ALL_PRODUCTS_FAILED = 'ALL_PRODUCTS_FAILED'
+import {
+    ALL_PRODUCT_REQUEST,
+    ALL_PRODUCTS_SUCCESS,
+    ALL_PRODUCTS_FAILED
+} from '../constants/productConstants';
+
 
 
 export const getProducts = () => async (dispatch, getState) => {
@@ -13,10 +16,10 @@ export const getProducts = () => async (dispatch, getState) => {
             type: ALL_PRODUCTS_SUCCESS,
             payload: data
         })
- 
+
     }
-    catch (error){
-        dispatch({type : ALL_PRODUCTS_FAILED, payload : error})
+    catch (error) {
+        dispatch({ type: ALL_PRODUCTS_FAILED, payload: error })
     }
 
 }
