@@ -149,9 +149,7 @@ const resetPassword = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler("resetPasswordToken has been expired", 401))
     }
 
-    console.log(password)
-    console.log(confirmPassword)
-
+    
     if (password !== confirmPassword) {
         return next(new ErrorHandler('given passwords do not match', 403));
     }
@@ -162,7 +160,8 @@ const resetPassword = catchAsyncError(async (req, res, next) => {
     user.updatedAt = Date.now();
 
     await user.save();
-    sendToken(user, 200, res)
+
+    sendToken(res, user, 200);
 
 
 })
